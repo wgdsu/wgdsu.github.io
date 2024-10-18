@@ -33,7 +33,7 @@ A traditional topic model for example Latent Dirichlet Allocation (LDA) takes a 
 These problems are further amplified when the underlying text changes, even when these changes are small. For example, consider performing LDA on a corpus of ten thousand documents, then on a corpus of the same ten thousand plus an extra one thousand documents. Even if we use the same random seed and number of topics as hyperparameters the list of topics returned will tend to differ greatly in order and representation of the topics even when semantically the topics are the same.
 
 #### Table 1: The problems of traditional topic models
-<img class="featured-image img-fluid" width="75%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-16-TopicModelMethod/tm-problems.png" alt="Table showing the mismatch of topics between two time periods.">
+<img class="featured-image img-fluid" width="80%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-16-TopicModelMethod/tm-problems.PNG" alt="Table showing the mismatch of topics between two time periods.">
 
 The problem therefore is not with the model itself as it is with the representation of topics from the model. In the example above when performing an analysis of these topics it is difficult to see that topics 1 and 3 are likely to be the same topic. Further, when performing topic modelling at scale with 50 topics this difficulty is amplified, making it almost impossible to track topics as emerging, stagnant or receding through time.
 
@@ -63,7 +63,7 @@ For evaluation we have used both an internal sensitive dataset which has not bee
 
 #### Table 2: Topic examples from Kaggle data
 
-<img class="featured-image img-fluid" width="75%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-16-TopicModelMethod/TopicsOverTime.png" alt="Table showing the mismatch of topics between two time periods.">
+<img class="featured-image img-fluid" width="80%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-16-TopicModelMethod/topicsOverTime.png" alt="Table showing the mismatch of topics between two time periods.">
 
 The metrics we report are the coherence metric commonly used in topic modelling. The coherence metric reported is the CV Coherence score ranging 0-1. We also report on metrics we have developed and found useful to assess the quality of a topic set found by a model:
 <br>
