@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+<h1>{{ page.author }}</h1>
+
+{% for post in site.posts %}
+    {% if post.author == page.author %}
+      {% include featuredbox.html %}
+    {% endif %}
+{% endfor %}
