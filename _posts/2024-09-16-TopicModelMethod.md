@@ -6,7 +6,7 @@ categories: [Methodologies]
 tags: [Natural Language Processing, Text Data, Topic Model, Machine Learning]
 image: assets/images/post-imgs/2024-09-16-TopicModelMethod/library_books.jpg
 description: "Our methodology for performing topic modelling on text data that grows over time."
-hidden: true
+hidden: false
 ---
 
 *Image Source: Image by <a href="https://unsplash.com/@thkelley?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Thomas Kelley</a> on <a href="https://unsplash.com/photos/books-filed-on-bookshelf-hHL08lF7Ikc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>*
@@ -32,7 +32,7 @@ A traditional topic model for example Latent Dirichlet Allocation (LDA) takes a 
 
 These problems are further amplified when the underlying text changes, even when these changes are small. For example, consider performing LDA on a corpus of ten thousand documents, then on a corpus of the same ten thousand plus an extra one thousand documents. Even if we use the same random seed and number of topics as hyperparameters the list of topics returned will tend to differ greatly in order and representation of the topics even when semantically the topics are the same.
 
-#### Table 1: The problems of traditional topic models
+**Table 1: The problems of traditional topic models**
 <img class="featured-image img-fluid" width="80%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-16-TopicModelMethod/tm-problems.PNG" alt="Table showing the mismatch of topics between two time periods.">
 
 The problem therefore is not with the model itself as it is with the representation of topics from the model. In the example above when performing an analysis of these topics it is difficult to see that topics 1 and 3 are likely to be the same topic. Further, when performing topic modelling at scale with 50 topics this difficulty is amplified, making it almost impossible to track topics as emerging, stagnant or receding through time.
@@ -55,15 +55,15 @@ We now consider the second time period. We apply a sliding window approach; in t
 
 Finally, we consider period three. In this period, we build a third model informed by period two and period three. We apply the word-topic vector from period two as a word prior to this model. We are now biasing based on a model that was previously biased by period one but was then optimised on data in period one and two. The idea is that these biases fade over time for topics that disappear from the data (recede) allowing others to emerge or they remain for the stagnant topics.
 
-#### Figure 1: Overview of dynamic topic model, three time periods
+**Figure 1: Overview of dynamic topic model, three time periods**
 <img class="featured-image img-fluid" width="75%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-16-TopicModelMethod/tm-process.png" alt="Outline of process described above.">
 
 ### Results
 For evaluation we have used both an internal sensitive dataset which has not been shared, and a publicly available dataset from [Kaggle](https://www.kaggle.com/datasets/rmisra/news-category-dataset). The table below shows the results of the dynamic process from the Kaggle dataset.
 
-#### Table 2: Topic examples from Kaggle data
+**Table 2: Topic examples from Kaggle data**
 
-<img class="featured-image img-fluid" width="80%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-16-TopicModelMethod/topicsOverTime.png" alt="Table showing the mismatch of topics between two time periods.">
+<img class="featured-image img-fluid" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-16-TopicModelMethod/topicsOverTime.png" alt="Table showing the mismatch of topics between two time periods.">
 
 The metrics we report are the coherence metric commonly used in topic modelling. The coherence metric reported is the CV Coherence score ranging 0-1. We also report on metrics we have developed and found useful to assess the quality of a topic set found by a model:
 <br>

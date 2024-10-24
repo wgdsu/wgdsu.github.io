@@ -28,7 +28,7 @@ The faker package provides most of the functionality we need to generate dummy d
 To use the data generator, you will first need to follow the instructions listed in the README file for the repository. This includes cloning the repository and installing the necessary dependencies.  The example below begins after cloning the repository and installing dependencies.
 As an example, we will generate data that matches the following relational schema:
 
-Figure 1: Example schema
+**Figure 1: Example schema**
 
 <img class="featured-image img-fluid" width="70%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-26-DummyData/sd-schema.png" alt="Schema showing two tables Employees with columns EmployeeRef, Name, PlaceofWork, Postcode, StartDate and EndDate and EmergencyContacts with columns Name, EmployeeRef and PhoneNum">
 
@@ -46,7 +46,7 @@ We will also add the following logical requirements:
 
 We first need to set up a JSON file which dictates the structure of our data. For the example, we create the following:
 
-Figure 2: Example JSON file
+**Figure 2: Example JSON file**
 ```json
 {
     "tables": {
@@ -120,7 +120,7 @@ Then we generate the dummy data:
 ```python
 data = generator.build()
 ```
-Figure 3: Examples of dummy data
+**Figure 3: Examples of dummy data**
 
 <img class="featured-image img-fluid" width="80%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-26-DummyData/sd-employee.PNG" alt="Dummy employee data">
 
