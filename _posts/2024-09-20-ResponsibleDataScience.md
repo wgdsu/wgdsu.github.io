@@ -23,23 +23,29 @@ To identify and manage these risks, the Data Science Unit considered a range of 
 ## The benefits of having good governance mechanisms
 
 Good quality governance can strengthen a project in multiple ways. Reasons to include governance mechanisms could stem from legal requirements or ensuring that we are being ethical when working with data or testing new techniques. Here are some of the key benefits of having robust governance mechanisms in place.
- 1. **Trust in Data**
 
+1. **Trust in Data**
+   
 Data is the backbone of all data science projects. Ensuring the quality, accuracy, and integrity of data is fundamental and not considering these can significantly limit the success of a project. Good governance practices also involve understanding circumstances around the data such as collection, storage, and processing. 
+
 2. **Confidence in machine learning and AI**
+   
+Machine learning models have been around for quite some time and the risks of using these algorithms are well documented. Limitations such as interpretability, performance, generalisation and bias all potentially hinder the adoption of ML and lower confidence in the usefulness of these algorithms. Good governance aims to identify and address these limitations to ensure that algorithms and their potential uses are well understood, quality is measured and transparent, and that assumptions and issues are well documented.
 
-Machine learning models have been around for quite some time and the risks of using these algorithms are well documented. Limitations such as interpretability, performance, generalisation and bias all potentially hinder the adoption of ML and lower confidence in the usefulness of these algorithms. Good governance aims to identify and address these limitations to ensure that algorithms and their potential uses are well understood, quality is measured and transparent, and that assumptions and issues are well documented. 
 3. **Privacy and GDPR Compliance**
-
+   
 The General Data Protection Regulation (GDPR) has clearly defined expectations around what data can be used and for what purposes. Having the right governance procedure can ensure that data is used in a way that complies with legal requirements and protects the privacy of individuals. For organisations, another benefit is that non-compliant actions are mitigated, potentially avoiding financial penalties and upholding the reputation of the organisation. 
+
 4. **Ethics**
-
+   
 With the constant improvement in performance of machine learning models and the ease at which they can be deployed, it can be easy to get carried away with these fascinating algorithms and not properly reflect on the ethics involved. Being able to use data to train a model to a high accuracy and deploy it for something useful does not mean that it is right to do. Ethical governance can help us consider the wider implications and consequences of a proposed project and ensure that we are working responsibly.
+
 5. **Transparency**
-
+   
 Transparency is an important element to governance and reaffirms the points above. Being open and transparent is key to responsible data science and helps build trust in project work and those developing data science solutions. This openness gives stakeholders, including the public, a chance to learn more about our work, understand how data science is implemented and how conclusions are drawn. Ensuring that project work is open and honest in all aspects of the project is fundamental to establishing a professional culture and greater maturity as an organisation.
-6. **Understanding Risks and Blockers**
 
+6. **Understanding Risks and Blockers**
+   
 Governance can also help identify and mitigate risks in project work and improve the chances of a successful outcome. This involves recognizing potential blockers that could hinder data projects such as data quality issues, ethical concerns, or technical limitations. By understanding these risks early on, we can develop strategies to address them proactively or identify that the project is not feasible and avoid wasting resource.
 
 This list of benefits is not exhaustive but demonstrates how governance frameworks can add value to data science projects. In the Data Science Unit, we use 3 tools to assess project work against and give an overview of these below.
