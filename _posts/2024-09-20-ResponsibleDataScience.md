@@ -7,6 +7,7 @@ tags: [AI, Data Ethics, Data Governnance, Machine Learning]
 image: assets/images/post-imgs/2024-09-20-ResponsibleDataScience/writing-stock-image.jpg
 description: "The importance of good governance in data science project work"
 featured: false
+hidden: true
 ---
 
 *Image Source: Image by <a href="https://unsplash.com/@homajob?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Scott Graham</a> on <a href="https://unsplash.com/photos/man-writing-on-paper-OQMZwNd3ThU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
