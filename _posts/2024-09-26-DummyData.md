@@ -13,7 +13,7 @@ hidden: False
 
 ### Building tools to generate Dummy Data
 
-In this blog we will present generalised code we have written for generating dummy data. We will also provide a worked example using the code to generate some dummy data. We have used dummy data in the Welsh Government for testing new platforms and data processes. The ability of dummy data to replicate the rules, structure and format of a data specification or real dataset makes it perfect for testing systems migration in place of using real data in insecure environments. Some examples of our use of dummy data include testing the Homes for Ukraine Data Platform and our internal Human Resources systems.
+In this blog we will present generalised code we have written for generating dummy data. We will also provide a worked example using the code to generate some dummy data. We have used dummy data in the Welsh Government for testing new platforms and data processes. The ability of dummy data to replicate the rules, structure and format of a data specification or real dataset makes it perfect for testing systems migration in place of using real data in insecure environments. Some examples of our use of dummy data include testing a file sharing service and other internal systems that have individual level data.
 
 Before talking more about our work, we think it is important to define what we mean by dummy data. We define dummy data as data that mimics a real dataset or data specification without any statistical relationships or patterns being preserved. This is an important distinction from synthetic data. Synthetic data is generated with the goal of preserving to some extent the statistical relationships and patterns from a real dataset. 
 
