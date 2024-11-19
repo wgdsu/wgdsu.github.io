@@ -1,5 +1,5 @@
 # Site
-name: "Welsh Government Data Science Unit"
+name: " The Welsh Government Data Science Unit"
 title: "DSUBlog"
 description: ""
 logo: ''
@@ -21,7 +21,7 @@ authors:
     email: datascienceunit@gov.wales
     web:  /authors/JoeHC
     twitter: 
-    description: "Data Scientist in the Data Science Unit"
+    description: "Data Scientist"
   DavidB:
     name: David
     display_name: David Basch
@@ -30,7 +30,7 @@ authors:
     email: datascienceunit@gov.wales
     web: /authors/DavidB
     twitter: 
-    description: "Data Scientist in the Data Science Unit"    
+    description: "Data Scientist"    
   JoeL:
     name: Joe
     display_name: Joe Lewis
@@ -39,7 +39,7 @@ authors:
     email: datascienceunit@gov.wales
     web: /authors/JoeL
     twitter: 
-    description: "Data Scientist in the Data Science Unit"
+    description: "Data Scientist"
   EvieB:
     name: Evie
     display_name: Evie Brown
@@ -48,7 +48,7 @@ authors:
     email: datascienceunit@gov.wales
     web: /authors/EvieB
     twitter: 
-    description: "Data Scientist in the Data Science Unit"
+    description: "Data Scientist"
   StevenH:
     name: Steven
     display_name: Steven Hopkins
@@ -57,7 +57,7 @@ authors:
     email: datascienceunit@gov.wales
     web: /authors/StevenH
     twitter: 
-    description: "Data Scientist in the Data Science Unit"
+    description: "Data Scientist"
     
 
 # Plugins

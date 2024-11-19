@@ -84,7 +84,7 @@ However, these results show the model is less successful at predicting the exact
 
 ### Application across Wales
 
-We then applied the same model and post processing steps to predict areas of woodland on unseen data which we mapped to the original image to inspect the predictions. Our first version of the model has shown promising results, as shown in Figure 5. In this example, from an area in LLanerchymedd, Anglesey, model predictions represented in green. 
+We then applied the same model and post processing steps to predict areas of woodland on unseen data which we mapped to the original image to inspect the predictions. Our first version of the model has shown promising results, as shown in Figure 5. In this example, from an area in Llanerchymedd, Anglesey, model predictions represented in green. 
 
 **Figure 5: An example of a model prediction for woodlands**
 <img class="featured-image img-fluid" width="60%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-07-Woodland-AI-1/wood5.png" alt="An example of accurate predictions, woolands areas shown with accurate model prediction of wooded areas in green">

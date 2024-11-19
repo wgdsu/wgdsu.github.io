@@ -7,7 +7,7 @@ comments: false
 
 #### The Data Science Unit
 
-The Data Science Unit are a team in the Welsh Government who apply data science and artificial intelligence techniques to help the organisation deliver for public in Wales. Our team is comitted to transparency and sharing knowledge to support others. We will post our technical blogs and methodologies on this platform to highlight successes and discuss challenges.
+The Data Science Unit are a team in the Welsh Government who apply data science and artificial intelligence techniques to improve the use of data through efficiency and innovation. Our team is comitted to transparency and sharing knowledge to support others. We'll share our technical blogs and methodologies here to explain our work and approach.
 
 If you have any questions or want to hear more about our work please send an email to DataScienceUnit@gov.wales
 

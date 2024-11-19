@@ -7,7 +7,7 @@ tags: [AI, Data Ethics, Data Governnance, Machine Learning]
 image: assets/images/post-imgs/2024-09-20-ResponsibleDataScience/writing-stock-image.jpg
 description: "The importance of good governance in data science project work"
 featured: false
-hidden: true
+hidden: false
 ---
 
 *Image Source: Image by <a href="https://unsplash.com/@homajob?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Scott Graham</a> on <a href="https://unsplash.com/photos/man-writing-on-paper-OQMZwNd3ThU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
@@ -33,9 +33,9 @@ Data is the backbone of all data science projects. Ensuring the quality, accurac
    
 Machine learning models have been around for quite some time and the risks of using these algorithms are well documented. Limitations such as interpretability, performance, generalisation and bias all potentially hinder the adoption of ML and lower confidence in the usefulness of these algorithms. Good governance aims to identify and address these limitations to ensure that algorithms and their potential uses are well understood, quality is measured and transparent, and that assumptions and issues are well documented.
 
-3. **Privacy and GDPR Compliance**
+3. **Privacy and UK GDPR Compliance**
    
-The General Data Protection Regulation (GDPR) has clearly defined expectations around what data can be used and for what purposes. Having the right governance procedure can ensure that data is used in a way that complies with legal requirements and protects the privacy of individuals. For organisations, another benefit is that non-compliant actions are mitigated, potentially avoiding financial penalties and upholding the reputation of the organisation. 
+The UK General Data Protection Regulation ( UK GDPR) has clearly defined expectations around what data can be used and for what purposes. Having the right governance procedure can ensure that data is used in a way that complies with legal requirements and protects the privacy of individuals. For organisations, another benefit is that non-compliant actions are mitigated, potentially avoiding financial penalties and upholding the reputation of the organisation. 
 
 4. **Ethics**
    
@@ -53,7 +53,8 @@ This list of benefits is not exhaustive but demonstrates how governance framewor
 
 ### Data Protection Impact Assessment
 
-The Data Protection Impact Assessment (DPIA) aims to understand if the data used in a project contains any personal data. Specifically, it assesses the privacy implications of collecting, securely storing, sharing and managing data that has personal information.
+The Data Protection Impact Assessment (DPIA) is a process for assessing the privacy implications of activities which involve the use, and any changes to the use, of personal data.
+
 The assessment first considers whether the data holds any personal information including [special category information](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/special-category-data/what-is-special-category-data/) and if so,  asks further questions about: 
 
 *	the collection of the data
