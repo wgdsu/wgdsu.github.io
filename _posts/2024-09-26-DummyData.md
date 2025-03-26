@@ -136,9 +136,35 @@ The dummy data tool presented is aimed at analysts, data scientists and statisti
 
 The examples above make use of the locale argument in the faker package to generate data with respect to the en_GB locale. This ensures that addresses and ID information (national insurance numbers) are in the Great British format. However, when generating dummy data it is important to be mindful of diversity and inclusion especially when using locales. We point to the use of custom functions, or iterative approaches to generation to use multiple locales when generating dummy data. This ensures that downstream use cases consider diversity and inclusion in the same way that they would for real datasets.
 
-As an example, we provide the code below that samples from a short list of Welsh names when producing a first name field:
+As an example, we provide the code below that samples from a short list of Welsh names when producing a first name field. We first add a line to the JSON file:
 
-### Future work
+```json
+"WelshName": {"type":"custom", "name":"generate_welsh_name"}
+```
+We add the custom function to our code and create the dummy data generator:
 
-We aim to continue to use dummy data to support a range of migration, test or example projects across the organisation. For those interested in applying the code themselves we provide our GitHub repository here.
+```python
+import numpy as np
+
+#create a custom function to select from a list of common Welsh names
+def generate_welsh_names(faker):
+
+    #this list can be updated
+    welsh_names = ["Osian", "Harri", "Macsen", "Ffion",
+                   "Eleri", "Cadi", "Emrys"]
+
+    #select a name
+    chosen = np.random.choice(welsh_names, 1)
+
+    yield chosen[0]
+
+#set up the custom function with a name from the JSON file
+custom_funcs = {"generate_welsh_name":generate_welsh_name}
+
+generator = DummyDataGenerator("config/example.json", seed=2187, locale="en_GB")
+```
+The generated data will now include a column called `WelshName` that contains random names from those specified in the function.
+
+
+
 
