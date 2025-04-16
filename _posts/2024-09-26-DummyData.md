@@ -6,7 +6,7 @@ categories: [Blog]
 tags: [RAP, Data Engineering, Capability, Data Visualisation, Automation]
 image: assets/images/post-imgs/2024-09-26-DummyData/dd-cover.jpg
 description: "Generating dummy data to support platform testing"
-hidden: False
+hidden: True
 ---
 
 *Image Source: Image by <a href="https://unsplash.com/@goeran?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Goren Eidens</a> on <a href="https://unsplash.com/photos/white-lotus-flower-on-body-of-water-6T7kfc3VitU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>*
