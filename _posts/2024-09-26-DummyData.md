@@ -6,30 +6,30 @@ categories: [Blog]
 tags: [SyntheticData, DataEngineering, Capability, Automation]
 image: assets/images/post-imgs/2024-09-26-DummyData/dd-cover.jpg
 description: "Generating synthetic data to support platform testing"
-hidden: True
+hidden: false
 ---
 
 *Image Source: Image by <a href="https://unsplash.com/@goeran?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Goren Eidens</a> on <a href="https://unsplash.com/photos/white-lotus-flower-on-body-of-water-6T7kfc3VitU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>*
 
-### Building tools to generate synthetic Data
+### Building tools to generate synthetic data
 
-In this blog we will present generalised code we have written for generating low fidelity synthetic data. We will also provide a worked example using the code to generate some synthetic data. We have used synthetic data in the Welsh Government for testing new services and data processes. The generator we present was also used to generate synthetic data for our ADR Wales Report: [Scoping and evaluating synthetic data to enhance access to research data](https://adrwales.org/wp-content/uploads/2025/04/BOLD-synthetic-data.pdf)
+The Welsh Government Data Science Unit have used synthetic data to support several projects including the testing of new services and data processes. In this blog we will provide an overview of the code we have developed to quickly generate low fidelity synthetic data. We will also demonstrate its use through an example. The code we present was also used to generate synthetic data for our ADR Wales Report: [Scoping and evaluating synthetic data to enhance access to research data](https://adrwales.org/wp-content/uploads/2025/04/BOLD-synthetic-data.pdf)
 
-Before talking more about our work, we think it is important to define what we mean by low fidelity synthetic data. We define low fidelity synthetic data as data that mimics a real dataset or data specification without any statistical relationships or patterns being preserved. This is an important distinction from high fidelity synthetic data. Synthetic data is generated with the goal of preserving to some extent the statistical relationships and patterns from a real dataset. The generator we present is capable of generating very low fidelity data as it does not attempt to maintain any statistical relationships or properties of a real dataset. There are extensions that developers can add for example using custom functions or adding weights to randomly generated categories to preserve single variable distributions that may increase the fidelity of the dataset.
+Before talking more about our work, we think it is important to define what we mean by low fidelity synthetic data. We define low fidelity synthetic data as data that mimics a real dataset or data specification without any statistical relationships preserved. This is an important distinction from high fidelity synthetic data that is generated with the goal of preserving to some extent the statistical relationships and patterns from a real dataset. Developers can add extensions to the code, for example, using custom functions or adding weights to randomly generated categories to preserve single variable distributions that may increase the fidelity of the dataset.
 
 ### Tools available for generating synthetic data
 
-The code we have written to generate synthetic data uses the faker Python package. This package is capable of generating vast amounts of fake information including names, dates, addresses and job titles. We have also used faker to generate fake information that is structured in locale-specific formats like national insurance numbers and postcodes. For those interested in exploring the faker package in more detail the full documentation is available [here](https://faker.readthedocs.io/en/master/#basic-usage ).
+Our code to generate synthetic data uses the faker Python package. This package is capable of generating vast amounts of fake information including names, dates, addresses and job titles. We have also used faker to generate fake information that is structured in locale-specific formats like national insurance numbers and postcodes. For those interested in exploring the faker package in more detail the full documentation is available [here](https://faker.readthedocs.io/en/master/#basic-usage ).
 
 The faker package provides most of the functionality we need to generate synthetic data. However, there are a few additional motivations we had for incorporating the faker package whilst also adding some of our own functionality:
   - A vast amount of public sector data relates to demographic information which tends to be categorical with fixed categories (for example, age bands: 0-9, 10-19 ...) therefore we wanted to use sample functions on pre-defined categories rather than generating purely random categories.
-  - Lots of analysis projects will use linked or relational datasets, the package we have written makes it easy to link synthetic datasets in the same way real datasets may be linked or related to one another.
+  - Lots of analysis projects will use linked or relational datasets, the code we have written makes it easy to link synthetic datasets in a consistent way to how the real datasets are linked.
 
-The remainder of this blog will focus on how our Data Generator can be used and provide some useful code for doing so.
+The remainder of this blog will focus on how our code can be used and provide some useful code for doing so.
 
-### Practical example of the low fidelity synthetic data generator
+### Practical example of the low fidelity synthetic data code
 
-To use the data generator, you will first need to follow the instructions listed in the README file for the repository. This includes cloning the repository and installing the necessary dependencies.  The example below begins after cloning the repository and installing dependencies.
+To use the data code, you will first need to follow the instructions listed in the README file for the repository. This includes cloning the repository and installing the necessary dependencies.  The example below begins after cloning the repository and installing dependencies.
 As an example, we will generate data that matches the following relational schema:
 
 **Figure 1: Example schema**
@@ -83,7 +83,7 @@ Some specific items that help us meet the requirements are:
 * **foreign_key**: Specifies that the values should be taken from a primary key in another table.
 * **rel_type**: Specifies the relationship between tables in this case one to many (1) where every employee must have one or more contact.
 
-The JSON file is  used to define the structure of the synthetic data. The next step is writing the Python code to generate it. First, we need to write a function that will generate our custom data. We actually need a generator function, generators can be used like iterables in Python. Generators yield results in a loop which is perfect for our use case of generating synthetic data. 
+The JSON file is  used to define the structure of the synthetic data. The next step is writing the Python code to generate it. First, we need to write a function that will generate our custom data. We need a generator function, a special type of function that can be used like iterables in Python. Generator functions yield results in a loop which is perfect for our use case of generating synthetic data. 
 
 In this case our custom data function is:
 ```python
