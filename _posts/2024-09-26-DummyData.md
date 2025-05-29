@@ -1,31 +1,35 @@
 ---
 layout: post 
-title: "Building tools to generate dummy data"
+title: "Building tools to generate low fidelity synthetic data"
 author: JoeL
 categories: [Blog]
-tags: [RAP, Data Engineering, Capability, Data Visualisation, Automation]
+tags: [SyntheticData, DataEngineering, Capability, Automation]
 image: assets/images/post-imgs/2024-09-26-DummyData/dd-cover.jpg
-description: "Generating dummy data to support platform testing"
-hidden: True
+description: "Generating synthetic data to support platform testing"
+hidden: false
 ---
 
 *Image Source: Image by <a href="https://unsplash.com/@goeran?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Goren Eidens</a> on <a href="https://unsplash.com/photos/white-lotus-flower-on-body-of-water-6T7kfc3VitU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>*
 
-### Building tools to generate Dummy Data
+### Building tools to generate synthetic data
 
-In this blog we will present generalised code we have written for generating dummy data. We will also provide a worked example using the code to generate some dummy data. We have used dummy data in the Welsh Government for testing new services and data processes. The ability of dummy data to replicate the rules, structure and format of a data specification or real dataset makes it perfect for testing systems migration in place of using real data in insecure environments. Some examples of our use of dummy data include testing a file sharing service and other internal systems that have individual level data.
+The Welsh Government Data Science Unit have used synthetic data to support several projects including the testing of new services and data processes. In this blog we will provide an overview of the code we have developed to quickly generate low fidelity synthetic data. We will also demonstrate its use through an example. The code we present was also used to generate synthetic data for our ADR Wales Report: [Scoping and evaluating synthetic data to enhance access to research data](https://adrwales.org/wp-content/uploads/2025/04/BOLD-synthetic-data.pdf)
 
-Before talking more about our work, we think it is important to define what we mean by dummy data. We define dummy data as data that mimics a real dataset or data specification without any statistical relationships or patterns being preserved. This is an important distinction from synthetic data. Synthetic data is generated with the goal of preserving to some extent the statistical relationships and patterns from a real dataset. 
+Before talking more about our work, we think it is important to define what we mean by low fidelity synthetic data. We define low fidelity synthetic data as data that mimics a real dataset or data specification without any statistical relationships preserved. This is an important distinction from high fidelity synthetic data that is generated with the goal of preserving to some extent the statistical relationships and patterns from a real dataset. Developers can add extensions to the code, for example, using custom functions or adding weights to randomly generated categories to preserve single variable distributions that may increase the fidelity of the dataset.
 
-### Tools available for generating dummy data
+### Tools available for generating synthetic data
 
-The code we have written to generate dummy data uses the faker Python package. This package is capable of generating vast amounts of fake information including names, dates, addresses and job titles. We have also used faker to generate fake information that meets the format locale-specific information like national insurance numbers and postcodes. For those interested in exploring the faker package in more detail the full documentation is available [here](https://faker.readthedocs.io/en/master/#basic-usage ).
+Our code to generate synthetic data uses the faker Python package. This package is capable of generating vast amounts of fake information including names, dates, addresses and job titles. We have also used faker to generate fake information that is structured in locale-specific formats like national insurance numbers and postcodes. For those interested in exploring the faker package in more detail the full documentation is available [here](https://faker.readthedocs.io/en/master/#basic-usage ).
 
-The faker package provides most of the functionality we need to generate dummy data. However, there are some pieces of information we want more control over or to generate in a slightly different way. We also need to be able to generate information that is persistent between many tables this is particularly important when we mimic relational systems like a relational database. This is why we have created generator code for dummy data. The remainder of this blog will focus on how our Dummy Data Generator can be used and provide some useful code for doing so.
+The faker package provides most of the functionality we need to generate synthetic data. However, there are a few additional motivations we had for incorporating the faker package whilst also adding some of our own functionality:
+  - A vast amount of public sector data relates to demographic information which tends to be categorical with fixed categories (for example, age bands: 0-9, 10-19 ...) therefore we wanted to use sample functions on pre-defined categories rather than generating purely random categories.
+  - Lots of analysis projects will use linked or relational datasets, the code we have written makes it easy to link synthetic datasets in a consistent way to how the real datasets are linked.
 
-### Practical example of the dummy data generator
+The remainder of this blog will focus on how our code can be used and provide some useful code for doing so.
 
-To use the data generator, you will first need to follow the instructions listed in the README file for the repository. This includes cloning the repository and installing the necessary dependencies.  The example below begins after cloning the repository and installing dependencies.
+### Practical example of the low fidelity synthetic data code
+
+To use the data code, you will first need to follow the instructions listed in the README file for the repository. This includes cloning the repository and installing the necessary dependencies.  The example below begins after cloning the repository and installing dependencies.
 As an example, we will generate data that matches the following relational schema:
 
 **Figure 1: Example schema**
@@ -79,7 +83,7 @@ Some specific items that help us meet the requirements are:
 * **foreign_key**: Specifies that the values should be taken from a primary key in another table.
 * **rel_type**: Specifies the relationship between tables in this case one to many (1) where every employee must have one or more contact.
 
-The JSON file is  used to define the structure of the dummy data. The next step is writing the Python code to generate it. First, we need to write a function that will generate our custom data. We actually need a generator function, generators can be used like iterables in Python. Generators yield results in a loop which is perfect for our use case of generating dummy data. 
+The JSON file is  used to define the structure of the synthetic data. The next step is writing the Python code to generate it. First, we need to write a function that will generate our custom data. We need a generator function, a special type of function that can be used like iterables in Python. Generator functions yield results in a loop which is perfect for our use case of generating synthetic data. 
 
 In this case our custom data function is:
 ```python
@@ -98,15 +102,15 @@ custom_funcs = {'generate_workplace':generate_workplace}
 
 which we use to generate a workplace location based on a prescribed distribution defined by the `weights` list so that there is a 20% chance of employment being in Cardiff, 30% in Powys and so on.
 
-Custom functions enable us to be creative or to adapt to unique requirements when generating dummy data. For example, we could use custom functions to:
+Custom functions enable us to be creative or to adapt to unique requirements when generating synthetic data. For example, we could use custom functions to:
 •	generate custom email addresses that meet an organisation format
-•	generate high-fidelity dummy data based on a more complex model or on a probability distribution
+•	generate high-fidelity synthetic data based on a more complex model or on a probability distribution
 •	generate columns that are aggregations or calculations based on other columns
 
-With the custom function defined we are able to generate dummy data. We start by initialising the generator:
+With the custom function defined we are able to generate synthetic data. We start by initialising the generator:
 
 ```python
-generator = DummyDataGenerator('config/example.json', custom_funcs=custom_funcs, seed=2187, locale='en_GB')
+generator = DataGenerator('config/example.json', custom_funcs=custom_funcs, seed=2187, locale='en_GB')
 ```
 
 When we initialise the generator, we pass in some key information:
@@ -115,33 +119,33 @@ When we initialise the generator, we pass in some key information:
 * A random seed to ensure reproducibility.
 * A locale (en_GB) which specifies the locale in which to generate information for example generate UK post code formats.
 
-Then we generate the dummy data:
+Then we generate the synthetic data:
 
 ```python
 data = generator.build()
 ```
-**Figure 3: Examples of dummy data**
+**Figure 3: Examples of synthetic data**
 
-<img class="featured-image img-fluid" width="80%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-26-DummyData/sd-employee.PNG" alt="Dummy employee data">
+<img class="featured-image img-fluid" width="80%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2024-09-26-DummyData/sd-employee.PNG" alt="Synthetic employee data">
 
 As the examples show we have successfully generated the data to the requirements set out above. The EmployeeRef can successfully be used to link information in the specified relationship type, start and end dates meet the constraints and all information is formatted correctly. This dataset is now ready to be used to test new automated pipelines!
 
 ### Considerations for reproducibility and accessibility
 
-When generating dummy data an added benefit is reproducibility. Note that above we used random seeds when generating dummy data. This ensures that using the same schema we can get the same dummy data in any environment. There is also an added benefit to reproducibility by using JSON schemas as we can catalogue and store the JSON file used to generate a dataset and archive for later use. Further, it is possible to provide a JSON schema and support code to an analyst to generate their own dummy data based on your specification. This enables users to create as much data as they require.
+When generating synthetic data it can be important to consider reproducibility so that the same test data can be used to test a system over many project iterations. Note that above we used random seeds when generating synthetic data. This ensures that using the same schema we can get the same synthetic data in any environment. There is also an added benefit to reproducibility by using JSON schemas as we can catalogue and store the JSON file used to generate a dataset and archive for later use. Further, it is possible to provide a JSON schema and support code to an analyst to generate their own synthetic data based on your specification. This enables users to create as much data as they require.
 
-The dummy data tool presented is aimed at analysts, data scientists and statisticians with a range of coding experience. Therefore, we consider accessibility to be of high importance. We have implemented the JSON file approach to enable the tool to be used with minimal code to generate simple dummy datasets. For those with more experience in coding we present the tool as a starting point to extend across more bespoke use cases. This can be done using either the custom functions capability or just the concepts shared in the dummy data tool.
+The synthetic data tool presented is aimed at analysts, data scientists and statisticians with a range of coding experience. Therefore, we consider accessibility to be of high importance. We have implemented the JSON file approach to enable the tool to be used with minimal code to generate simple synthetic datasets. For those with more experience in coding we present the tool as a starting point to extend across more bespoke use cases. This can be done using either the custom functions capability or just the concepts shared in the synthetic data tool.
 
 ### Considerations for diversity and inclusion
 
-The examples above make use of the locale argument in the faker package to generate data with respect to the en_GB locale. This ensures that addresses and ID information (national insurance numbers) are in the Great British format. However, when generating dummy data it is important to be mindful of diversity and inclusion especially when using locales. We point to the use of custom functions, or iterative approaches to generation to use multiple locales when generating dummy data. This ensures that downstream use cases consider diversity and inclusion in the same way that they would for real datasets.
+The examples above make use of the locale argument in the faker package to generate data with respect to the en_GB locale. This ensures that addresses and ID information (national insurance numbers) are in the Great British format. However, when generating synthetic data it is important to be mindful of diversity and inclusion especially when using locales. We point to the use of custom functions, or iterative approaches to generation to use multiple locales when generating synthetic data. This ensures that downstream use cases consider diversity and inclusion in the same way that they would for real datasets.
 
 As an example, we provide the code below that samples from a short list of Welsh names when producing a first name field. We first add a line to the JSON file:
 
 ```json
 "WelshName": {"type":"custom", "name":"generate_welsh_name"}
 ```
-We add the custom function to our code and create the dummy data generator:
+We add the custom function to our code and create the synthetic data generator:
 
 ```python
 import numpy as np
@@ -161,7 +165,7 @@ def generate_welsh_names(faker):
 #set up the custom function with a name from the JSON file
 custom_funcs = {"generate_welsh_name":generate_welsh_name}
 
-generator = DummyDataGenerator("config/example.json", seed=2187, locale="en_GB")
+generator = DataGenerator("config/example.json", seed=2187, locale="en_GB")
 ```
 The generated data will now include a column called `WelshName` that contains random names from those specified in the function.
 
