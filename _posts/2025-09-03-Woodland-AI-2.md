@@ -8,7 +8,7 @@ image: assets/images/post-imgs/2025-09-03-Woodland-AI-2/woodland-cover.jpg
 description: "Using deep learning to detect different types of trees on historic maps"
 featured: true
 hidden: false
-
+---
 
 *Image Source: [Welsh Government](https://www.gov.wales/national-forest/wentwood-forest)*
 
