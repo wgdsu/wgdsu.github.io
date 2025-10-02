@@ -6,8 +6,8 @@ categories: [Blog]
 tags: [Geospatial, AI, Machine Learning, Geography, Computer Vision]
 image: assets/images/post-imgs/2024-09-07-Woodland-AI-1/woodland-cover.jpg
 description: "Using Computer Vision to identify areas of ancient woodland."
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 *Image Source: [Welsh Government](https://www.gov.wales/27-woodlands-join-national-forest-for-wales)*
