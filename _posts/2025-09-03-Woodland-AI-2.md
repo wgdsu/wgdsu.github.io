@@ -7,7 +7,7 @@ tags: [Geospatial, AI, Machine Learning, Geography, Computer Vision]
 image: assets/images/post-imgs/2025-09-03-Woodland-AI-2/woodland-cover.jpg
 description: "Using deep learning to detect different types of trees on historic maps"
 featured: true
-hidden: false
+hidden: true
 ---
 
 *Image Source: [Welsh Government](https://www.gov.wales/national-forest/wentwood-forest)*
@@ -100,7 +100,7 @@ The post-processing steps have improved the original model predictions  however,
 Sometimes, the predicted polygons of different woodland appear artificial, in unnatural squares or oblong shapes. We will continue to work on improving these outputs to minimize the effect of this for future versions and suggest considering all the predicted labels for the larger area if analysing locations where this occurs. 
 
  **Figure 5: Example of a large area unnaturally split into different woodland types. The Conifer predicted area has been shaded in green, Broadleaf predicted area shaded in orange, Mixed Wood predicted area has been shaded in blue and the Bush predicted area has been shaded in red.**
-<img class="featured-image img-fluid" width="60%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2025-09-03-Woodland-AI-2/wood4.png" alt="Example of square shaped predictions retained after post processing">
+<img class="featured-image img-fluid" width="60%" height="auto" src="{{ site.basurl }}/assets/images/post-imgs/2025-09-03-Woodland-AI-2/wood5.png" alt="Example of square shaped predictions retained after post processing">
 
 ### Wrap up: how should we use these outputs?
 
